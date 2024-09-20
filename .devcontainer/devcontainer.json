@@ -1,0 +1,27 @@
+{
+    "name": "Python and OpenJDK Development Container",
+    "dockerFile": "Dockerfile",
+    "context": ".",
+    "build": {
+        "args": {
+            "IMAGE_VARIANT": "slim-buster",
+            "OPENJDK_VERSION": "11",
+            "PYTHON_VERSION": "3.10",
+            "PYSPARK_VERSION": "3.2.1"
+        }
+    },
+    "settings": {
+        "python.pythonPath": "/usr/local/bin/python", // Adjust this if needed
+        "editor.formatOnSave": true
+    },
+    "extensions": [
+        "ms-python.python",
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-docker"
+    ],
+    "forwardPorts": [
+        4000 // Adjust the port based on your application
+    ],
+    "postCreateCommand": "pip install -r requirements.txt", // Command to run after the container is created
+    "remoteUser": "newuser" // Set the user to the one you created in the Dockerfile
+}
